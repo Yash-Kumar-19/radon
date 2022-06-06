@@ -13,3 +13,18 @@ const getBooksData= async function (req, res) {
 
 module.exports.createBook= createBook
 module.exports.getBooksData= getBooksData
+
+//1. What is Regex
+// 2. Intro to async await
+// 3. Various MongoDB queries - esp. find findById count select sort limit skip update
+// 4. Filter conditions inside find :-
+//  $or:   e.  find(   { $or : [ {cond1 } , {cond2} , {cond3} ] }  )    
+//  $in : [0,10,20, 30, 40, 50] 
+//  $eq
+// $ne
+//  $gt:
+//  $lt:
+//  $gte:
+//  $lte:
+//  $in:
+//  $nin:
