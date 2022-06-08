@@ -1,6 +1,6 @@
 const { count } = require("console")
-const NovelModel= require("../models/bookModel")
-const AuthorModel= require("../models/userModel")
+const NovelModel= require("../models/NovelModel")
+const AuthorModel= require("../models/AuthorModel")
 
 const createNovel= async function (req, res) {
     let data= req.body
@@ -36,6 +36,7 @@ const getUpdatedPrice = async function(req,res){
 
 const getPriceAndAuthor = async function(req,res){
     let priceRange = await NovelModel.find({   price : {$gte :50 , $lte: 100}}).select({ author_id : 1, _id : 0})
+    console.log(priceRange)
     for(index = 0 ; index < priceRange.length; index++){
         priceRange[index] =  await AuthorModel.find(priceRange[index]).select({authorName :1, _id : 0})
     }
