@@ -2,6 +2,8 @@ const { count } = require("console")
 const NovelModel= require("../models/NovelModel")
 const AuthorModel= require("../models/AuthorModel")
 
+                    //////////////////Route Handlers///////////
+
 const createNovel= async function (req, res) {
     let data= req.body
  let savedData= await NovelModel.create(data)
