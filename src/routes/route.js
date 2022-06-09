@@ -17,4 +17,8 @@ router.get("/getUpdatedPrice", bothController.getUpdatedPrice)
 
 router.get("/getPriceAndAuthor", bothController.getPriceAndAuthor)
 
+router.get("/getBooksByAuthorID/:requestID", bothController.getBooksByAuthorID)
+
+router.get("/getAuthorByAge", bothController.getAuthorByAge)
+
 module.exports = router;

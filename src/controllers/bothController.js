@@ -45,12 +45,32 @@ const getPriceAndAuthor = async function(req,res){
     
     res.send({  msg : priceRange})
 }
-
-
-
+//////////////Additional Question Given On 08/06/2022//////////////////////
+const getBooksByAuthorID = async function(req,res){
+    let authorId = req.params.requestID
+    let aName = await NovelModel.find({  author_id:authorId}).select({ novelName : 1 , _id : 0})
+    console.log(aName)
+    if(aName.length === 0){
+        res.send({msg: "No books by this Author ID"})
+     }else
+     {res.send({data: aName})}
+}
+ 
+const getAuthorByAge = async function(req,res){
+    let novel = await NovelModel.find({ rating :{$gt : 4}}).select({author_id :1, _id : 0})   
+    console.log(novel)
+    let authorInfo
+    for(let index = 0; index<novel.length; index++){
+         authorInfo = await AuthorModel.find({$and : [{ age : {$gt : 50}},novel[index]]}
+                            ).select({authorName: 1 , age : 1, _id : 0})
+    }
+    res.send({msg : authorInfo})
+}
 
 module.exports.createNovel = createNovel
 module.exports.createAuthor = createAuthor
 module.exports.getBooksByCB = getBooksByCB
 module.exports.getUpdatedPrice = getUpdatedPrice
 module.exports.getPriceAndAuthor = getPriceAndAuthor
+module.exports.getBooksByAuthorID = getBooksByAuthorID
+module.exports.getAuthorByAge = getAuthorByAge
